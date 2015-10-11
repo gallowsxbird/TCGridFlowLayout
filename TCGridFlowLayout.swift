@@ -42,6 +42,11 @@ class TCGridFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func prepareLayout() {
+        if(scrollDirection  != .Vertical){
+            debugPrint("WARNING: Horizontal scrollDirection not supported by TCGridFlowLayout. Setting Vertical direction!")
+            scrollDirection = .Vertical
+        }
+        
         setSpacings()
         setItemSize(collectionViewContentSize())
     }
