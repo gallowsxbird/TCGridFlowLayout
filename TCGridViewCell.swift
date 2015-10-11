@@ -1,6 +1,5 @@
 //
 //  TCGridViewCell.swift
-//  GridTest
 //
 //  Created by Marco Cancellieri on 10/10/15.
 //  Copyright © 2015 Tricorn Corporation. All rights reserved.
