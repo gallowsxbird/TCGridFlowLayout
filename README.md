@@ -1,5 +1,5 @@
 #TCGridFlowLayout
-TCGridFlowLayout calculates the size of its items based on the given columns, gutter and inset values.
+TCGridFlowLayout calculates the size of its UICollectionView cells based on the given columns, gutter and inset values.
 
 Works in Portrait and Landscape!
 
