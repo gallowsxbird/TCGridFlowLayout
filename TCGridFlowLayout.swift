@@ -10,17 +10,17 @@ import UIKit
 class TCGridFlowLayout: UICollectionViewFlowLayout {
     
     private var isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
-    var inset: CGFloat = 0 {
+    @IBInspectable var inset: CGFloat = 0 {
         didSet{
             prepareLayout()
         }
     }
-    var columns : Int = 2 {
+    @IBInspectable var columns : Int = 2 {
         didSet{
             prepareLayout()
         }
     }
-    var gutter : CGFloat = 1 {
+    @IBInspectable var gutter : CGFloat = 1 {
         didSet{
             prepareLayout()
         }
