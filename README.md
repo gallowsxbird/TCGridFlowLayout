@@ -2,6 +2,7 @@
 TCGridFlowLayout calculates the size of its UICollectionView cells based on the given columns, gutter and inset values.
 
 Works in Portrait and Landscape!
+The Landscape item size is calculated based on their size in Portrait. 
 
 ##Usage
 
