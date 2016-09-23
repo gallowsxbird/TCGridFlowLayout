@@ -24,7 +24,7 @@ class TCGridViewCell: UICollectionViewCell {
     }
     
     private func setupCell(){
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.contentMode = .scaleAspectFill
         self.backgroundView = self.imageView
         
         self.highlightView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -37,6 +37,6 @@ class TCGridViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         self.imageView.image = nil
-        self.selected = false
+        self.isSelected = false
     }
 }

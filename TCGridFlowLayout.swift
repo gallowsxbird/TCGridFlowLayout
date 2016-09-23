@@ -8,21 +8,21 @@
 import UIKit
 
 class TCGridFlowLayout: UICollectionViewFlowLayout {
-    
-    private var isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+  
+    private var isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
     @IBInspectable var columns : Int = 2 {
         didSet{
-            prepareLayout()
+            prepare()
         }
     }
     @IBInspectable var gutter : CGFloat = 1 {
         didSet{
-            prepareLayout()
+            prepare()
         }
     }
     @IBInspectable var inset: CGFloat = 0 {
         didSet{
-            prepareLayout()
+            prepare()
         }
     }
     
@@ -41,14 +41,14 @@ class TCGridFlowLayout: UICollectionViewFlowLayout {
         super.init(coder: aDecoder)
     }
     
-    override func prepareLayout() {
-        if(scrollDirection  != .Vertical){
+    override func prepare() {
+        if(scrollDirection  != .vertical){
             debugPrint("WARNING: Horizontal scrollDirection not supported by TCGridFlowLayout. Setting Vertical direction!")
-            scrollDirection = .Vertical
+            scrollDirection = .vertical
         }
         
         setSpacings()
-        setItemSize(collectionViewContentSize())
+        setItemSize(parentSize: collectionViewContentSize)
     }
     
     private func setSpacings(){
@@ -58,7 +58,7 @@ class TCGridFlowLayout: UICollectionViewFlowLayout {
     }
     
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         let cvWidth = collectionView!.frame.size.width
         
         // check if switching to landscape (seems like there's no better way of doing this...)
@@ -69,7 +69,7 @@ class TCGridFlowLayout: UICollectionViewFlowLayout {
                 columnsLandscape = getLandscapeColumns()
             }
             
-            setItemSize(newBounds.size)
+            setItemSize(parentSize: newBounds.size)
             
             return true
         }
@@ -80,7 +80,7 @@ class TCGridFlowLayout: UICollectionViewFlowLayout {
     private func setItemSize(parentSize : CGSize){
         let sizeVal = CGFloat(Int((parentSize.width - (getColumns() - 1) * getGutter() - 2 * getInset()) / getColumns()))
         
-        self.itemSize = CGSizeMake(sizeVal, sizeVal);
+        self.itemSize = CGSize(width: sizeVal, height: sizeVal)
     }
     
     func getLandscapeColumns() -> CGFloat {
